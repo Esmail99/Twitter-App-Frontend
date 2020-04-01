@@ -1,0 +1,31 @@
+{
+  "files": {
+    "main.css": "/Twitter-App-Frontend/static/css/main.5f361e03.chunk.css",
+    "main.js": "/Twitter-App-Frontend/static/js/main.32f0d96d.chunk.js",
+    "main.js.map": "/Twitter-App-Frontend/static/js/main.32f0d96d.chunk.js.map",
+    "runtime-main.js": "/Twitter-App-Frontend/static/js/runtime-main.9d9b5354.js",
+    "runtime-main.js.map": "/Twitter-App-Frontend/static/js/runtime-main.9d9b5354.js.map",
+    "static/css/2.3b6f1bda.chunk.css": "/Twitter-App-Frontend/static/css/2.3b6f1bda.chunk.css",
+    "static/js/2.18d56080.chunk.js": "/Twitter-App-Frontend/static/js/2.18d56080.chunk.js",
+    "static/js/2.18d56080.chunk.js.map": "/Twitter-App-Frontend/static/js/2.18d56080.chunk.js.map",
+    "index.html": "/Twitter-App-Frontend/index.html",
+    "precache-manifest.437bcfd11bd19dd090a28bc66fd2b04d.js": "/Twitter-App-Frontend/precache-manifest.437bcfd11bd19dd090a28bc66fd2b04d.js",
+    "service-worker.js": "/Twitter-App-Frontend/service-worker.js",
+    "static/css/2.3b6f1bda.chunk.css.map": "/Twitter-App-Frontend/static/css/2.3b6f1bda.chunk.css.map",
+    "static/css/main.5f361e03.chunk.css.map": "/Twitter-App-Frontend/static/css/main.5f361e03.chunk.css.map",
+    "static/js/2.18d56080.chunk.js.LICENSE.txt": "/Twitter-App-Frontend/static/js/2.18d56080.chunk.js.LICENSE.txt",
+    "static/media/avatar.jpg": "/Twitter-App-Frontend/static/media/avatar.732dc8fe.jpg",
+    "static/media/comment.png": "/Twitter-App-Frontend/static/media/comment.ae267f51.png",
+    "static/media/delete.webp": "/Twitter-App-Frontend/static/media/delete.f1782b1c.webp",
+    "static/media/like.webp": "/Twitter-App-Frontend/static/media/like.b9d889dd.webp",
+    "static/media/likes.jpg": "/Twitter-App-Frontend/static/media/likes.39182f5f.jpg",
+    "static/media/logo.png": "/Twitter-App-Frontend/static/media/logo.d6716f1a.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.9d9b5354.js",
+    "static/css/2.3b6f1bda.chunk.css",
+    "static/js/2.18d56080.chunk.js",
+    "static/css/main.5f361e03.chunk.css",
+    "static/js/main.32f0d96d.chunk.js"
+  ]
+}
