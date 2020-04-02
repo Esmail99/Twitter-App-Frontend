@@ -8,9 +8,16 @@ import Profile from './components/Profile';
 // import Footer from './components/Footer';
 
 const initialState = {
-    route: 'homeDefault',
+    route: 'profile',
     isSignedin: false,
-    userInfo: {}
+    userInfo: {
+      "following": false,
+      "_id": "5e844e7146ff4f3920940b8f",
+      "username": "Esmail",
+      "email": "esmail@gmail.com",
+      "password": "123",
+      "__v": 0
+  }
 }
 
 class App extends Component {
