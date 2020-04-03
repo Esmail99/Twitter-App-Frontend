@@ -1,27 +1,27 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "9d33ff5734eb20c2e318ba41c227708d",
+    "revision": "f4587f26bcbb70eaec9243b4903b31ba",
     "url": "/Twitter-App-Frontend/index.html"
   },
   {
-    "revision": "a16c6e5861758aeeed51",
-    "url": "/Twitter-App-Frontend/static/css/2.3b6f1bda.chunk.css"
+    "revision": "014062fa94d7a8b1f6d1",
+    "url": "/Twitter-App-Frontend/static/css/2.28a5ec9d.chunk.css"
   },
   {
-    "revision": "f170d9c4e92e95ca3c98",
+    "revision": "82460841d2febde3c783",
     "url": "/Twitter-App-Frontend/static/css/main.5f361e03.chunk.css"
   },
   {
-    "revision": "a16c6e5861758aeeed51",
-    "url": "/Twitter-App-Frontend/static/js/2.18d56080.chunk.js"
+    "revision": "014062fa94d7a8b1f6d1",
+    "url": "/Twitter-App-Frontend/static/js/2.9a47d91f.chunk.js"
   },
   {
-    "revision": "e88a3e95b5364d46e95b35ae8c0dc27d",
-    "url": "/Twitter-App-Frontend/static/js/2.18d56080.chunk.js.LICENSE.txt"
+    "revision": "1baa02233bbd827e3584e32091a75902",
+    "url": "/Twitter-App-Frontend/static/js/2.9a47d91f.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "f170d9c4e92e95ca3c98",
-    "url": "/Twitter-App-Frontend/static/js/main.32f0d96d.chunk.js"
+    "revision": "82460841d2febde3c783",
+    "url": "/Twitter-App-Frontend/static/js/main.938ae8e1.chunk.js"
   },
   {
     "revision": "2a026f52ded1ce3ac0b1",
@@ -36,8 +36,16 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/Twitter-App-Frontend/static/media/comment.ae267f51.png"
   },
   {
+    "revision": "eb1c51c888717d7a0907780f74ce261b",
+    "url": "/Twitter-App-Frontend/static/media/cover.eb1c51c8.jpg"
+  },
+  {
     "revision": "f1782b1cdcc7d40fd0df91d2e45fed8d",
     "url": "/Twitter-App-Frontend/static/media/delete.f1782b1c.webp"
+  },
+  {
+    "revision": "fb6f568248ca31e456c3904f68bde2aa",
+    "url": "/Twitter-App-Frontend/static/media/edit.fb6f5682.png"
   },
   {
     "revision": "b9d889dd7a1c874e043ee86f6086a89a",
@@ -50,5 +58,9 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "d6716f1a7ac9e77140a8879f9cd0805b",
     "url": "/Twitter-App-Frontend/static/media/logo.d6716f1a.png"
+  },
+  {
+    "revision": "233b2fde10c69ae75bbe12cb2d27feb9",
+    "url": "/Twitter-App-Frontend/static/media/profile.233b2fde.jpg"
   }
 ]);
