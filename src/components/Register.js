@@ -7,8 +7,7 @@ class Register extends React.Component{
             registerUsername: '',
             registerEmail: '',
             registerPassword: '',
-            usernameTaken: false,
-            emailTaken: false
+            userAlreadyExist: false
         }
     }
 
@@ -41,16 +40,10 @@ class Register extends React.Component{
         })
         .then(response => response.json())
         .then(data => {
-            if(data.username === 1){
-                this.setState({ emailTaken: false})
-                this.setState({ usernameTaken: true})
-            }
-            else if(data.email === 1) {
-                this.setState({ usernameTaken: false})
-                this.setState({ emailTaken: true})
-            }
-            else if(data._id){
+            if(data._id){
                 this.props.changeRoute('signin');
+            } else {
+                this.setState({ userAlreadyExist: true })
             }
         })
     }
@@ -74,7 +67,7 @@ class Register extends React.Component{
                                 required
                             />
                             {
-                                this.state.usernameTaken ? <p className='red'>USERNAME ALREADY TAKEN!</p> : null
+                                this.state.userAlreadyExist ? <p className='red'>USERNAME OR EMAIL ALREADY TAKEN!</p> : null
                             }
                         </div>
                         <div className="mt3">
@@ -86,9 +79,6 @@ class Register extends React.Component{
                                 name="email-address" 
                                 required
                             />
-                            {
-                                this.state.emailTaken ? <p className='red'>EMAIL ALREADY TAKEN!</p> : null
-                            }
                         </div>
                         <div className="mv3">
                             <label className="db fw6 lh-copy f6">Password</label>
@@ -103,7 +93,7 @@ class Register extends React.Component{
                         </div>
                         </fieldset>
                         <div>
-                        <   input className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib" type="submit" value="Register" />
+                        <input className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib" type="submit" value="Register" />
                         </div>
                         <div className="lh-copy mt3">Already have an accout?
                             <span 
