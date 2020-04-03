@@ -1,4 +1,6 @@
 import React from 'react'
+import { PopupboxManager, PopupboxContainer } from 'react-popupbox';
+import "react-popupbox/dist/react-popupbox.css"
 
 class Home extends React.Component{
     constructor(props){
@@ -25,14 +27,23 @@ class Home extends React.Component{
                 return(
                     <article className="w-100 center bg-white br4 pa3 pa3-ns mv3 ba b--black-40 pb0 pb0-ns" key={index}>
                         <div className="tc">
-                            <img src={require("./avatar.jpg")} className="br-100 h2 w2 dib pointer dim" title="Photo of a kitty staring at you" alt="avatar" />
-                            <h1 className="f4 pointer dim">{tweet.username}</h1>
+                            <img 
+                                onClick={() => this.showProfile(tweet.username)}
+                                src={require("./images/avatar.jpg")} 
+                                className="br-100 h2 w2 dib pointer dim" 
+                                title="Photo of a kitty staring at you" alt="avatar" 
+                            />
+                            <h1 
+                                onClick={() => this.showProfile(tweet.username)}
+                                className="f4 pointer dim">{tweet.username}
+                            </h1>
+                            <PopupboxContainer />
                             <hr className="mw3 bb bw1 b--black-10" />
                         </div>
                         <p className="lh-copy measure center f3 black-70">{tweet.content}</p>
                         <div className='tl mb2'>
                             <img 
-                                src={require("./likes.jpg")}
+                                src={require("./images/likes.jpg")}
                                 className='w2 ma0 pa0'
                                 alt="likes" 
                             />
@@ -41,14 +52,14 @@ class Home extends React.Component{
                             <button onClick={() => this.handleLikes(tweet._id)} className='dim pointer w-50 bn outline-0'>
                                 <img
                                     id={`likeBtn${tweet._id}`} 
-                                    src={require("./like.webp")}
+                                    src={require("./images/like.webp")}
                                     className= {this.state.liked[tweet._id] ? 'w2 br-100 grow pointer dim bg-light-blue' : 'w2 br-100 grow pointer dim'}
                                     alt="like"
                                 />
                             </button>
                             <button onClick={() => this.showCommentBlock(tweet._id)} id='likeBtn' className='dim pointer w-50 bn outline-0'>
                                 <img 
-                                    src={require("./comment.png")}
+                                    src={require("./images/comment.png")}
                                     className='w2 br-100 grow pointer dim'
                                     alt="comment" 
                                 />
@@ -60,7 +71,7 @@ class Home extends React.Component{
                             <div className="bg-white mw6 center pa2 br4-ns ba b--white dn" id={`commentBlock${tweet._id}`}>
                                 <fieldset className="cf bn ma0 pa0">
                                 <div className="cf">
-                                    <img src={require("./avatar.jpg")} className="fl br-100 h2 w2 dib pointer dim mt1 mr2" title="Photo of a kitty staring at you" alt="avatar" />
+                                    <img src={require("./images/avatar.jpg")} className="fl br-100 h2 w2 dib pointer dim mt1 mr2" title="Photo of a kitty staring at you" alt="avatar" />
                                     <textarea 
                                         onChange = {this.onCommentChange}
                                         className="f3 input-reset bn fl black-80 bg-white pt2 lh-solid w-60 w-60-m w-60-l br2-ns outline-0" 
@@ -85,8 +96,18 @@ class Home extends React.Component{
                             tweet.comments = tweet.comments.map((comment,index) => {
                                 return(
                                     <div className='bg-black-20 br3 tl ph3 pa2 pb0 w-80 ml4' key={index}>
-                                        <img src={require("./avatar.jpg")} className="br-100 h2 w2 dib pointer fl mr2" title="Photo of a kitty staring at you" alt="avatar" />
-                                        <h5 className='pb0 mb3 mt2 pointer hover-black-70 dark-blue dib'>{comment.owner}</h5>
+                                        <img 
+                                            onClick={() => this.showProfile(comment.owner)}
+                                            src={require("./images/avatar.jpg")} 
+                                            className="br-100 h2 w2 dib pointer fl mr2" 
+                                            title="Photo of a kitty staring at you" 
+                                            alt="avatar" 
+                                        />
+                                        <h5 
+                                            onClick={() => this.showProfile(comment.owner)}
+                                            className='pb0 mb3 mt2 pointer hover-black-70 dark-blue dib'>
+                                            {comment.owner}
+                                        </h5>
                                         <p className='pt0 mb3 mt0 ml4 f4'>{comment.content}</p>
                                     </div>
                                 )
@@ -183,16 +204,95 @@ class Home extends React.Component{
             this.props.changeRoute('signin')
         }
     }
+
+    isFollowing = (username) => {
+        if(this.props.isSignedin){
+            let followState = false
+            this.props.userInfo.following.forEach(follower => {
+                if(follower === username)
+                    followState = true
+            })
+            return followState
+        }
+    }
+
+    showProfile = (username) => {
+        fetch(`http://localhost:5000/${username}`)
+        .then(res => res.json())
+        .then(tweets => {
+            tweets = tweets.map((tweet,index) => {
+                if(index <= 2)
+                {
+                    return(
+                        <div className='bg-black-20 br3 tc w-100' key={index}>
+                            <p className='f4 pa3'>{tweet.content}</p>
+                        </div>
+                    )
+                }
+                return(null)
+            })
+
+            const content = (
+                <div>
+                    <h4>{username}</h4>
+                    <div>
+                        <img src={require("./images/profile.jpg")} className="h4 w4 mt1 mr2" title="Photo of a kitty staring at you" alt="avatar" />
+                    </div>
+                    <button
+                        id={`follow${username}`}
+                        className='f6 link dim ba ph1 mb2 dib pointer bw1 b--black bg-white'
+                        type='button'>
+                        {
+                            this.isFollowing(username) 
+                            ? <p 
+                                onClick={() => this.onFollowClick(username,'unfollow')}
+                                className='red pv0'>
+                                Following
+                              </p> 
+                            : <p 
+                                onClick={() => this.onFollowClick(username,'follow')}
+                                className='pv0'>
+                                Follow
+                              </p>
+                        }
+                    </button>
+                    <p>Latest Tweets</p>
+                    {tweets}
+                </div>
+            )
+            PopupboxManager.open({ content })
+        })
+    }
+
+    onFollowClick = (username,state) => {
+        if(this.props.isSignedin){
+            fetch(`http://localhost:5000/${state}/${this.props.userInfo.username}`,{
+                method: 'put',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({
+                    username: username
+                })
+            }).then(response => response.json())
+            .then(user => {
+                this.props.loadUser(user)
+                PopupboxManager.close()
+            })
+        } else {
+            this.props.changeRoute('signin')
+        }
+    }
     
     render(){
         return(
             <div className="tc f3 mh4">
                 <section className="mw7 center avenir">
-                    <div className="pt2">
+                {
+                    this.props.isSignedin 
+                    ? <div className="pt2">
                         <form className="bg-white mw7 center pa2 br1-ns ba b--black-10" onSubmit={this.onFormSubmit}>
                             <fieldset className="cf bn ma0 pa0">
                             <div className="cf">
-                                <img src={require("./avatar.jpg")} className="fl br-100 h2 w2 dib pointer dim mt1 mr2" title="Photo of a kitty staring at you" alt="avatar" />
+                                <img src={require("./images/avatar.jpg")} className="fl br-100 h2 w2 dib pointer dim mt1 mr2" title="Photo of a kitty staring at you" alt="avatar" />
                                 <textarea 
                                     onChange = {this.onTextareaChange}
                                     className="f3 input-reset bn fl black-80 bg-white pt2 lh-solid w-80 w-80-m w-80-l br2-ns outline-0" 
@@ -201,6 +301,7 @@ class Home extends React.Component{
                                     name="tweet" 
                                     id="textarea" 
                                     style={{resize: 'none'}} 
+                                    required
                                 />
                                 <input 
                                     className="f4 f3-l button-reset fr pv3 tc bn bg-animate bg-blue grow white pointer w-50 w-20-m w-20-l br4-ns outline-0" 
@@ -210,7 +311,9 @@ class Home extends React.Component{
                             </div>
                             </fieldset>
                         </form>
-                    </div>
+                     </div>
+                    : null
+                }
                     {this.state.tweets}
                 </section>
             </div>

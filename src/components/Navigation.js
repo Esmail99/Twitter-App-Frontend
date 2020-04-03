@@ -11,7 +11,7 @@ class Navigation extends React.Component{
                     <p className="dtc v-mid mid-gray link w-25" title="Home">
                         <img 
                             onClick={() => this.props.changeRoute('homeSignedin')}
-                            src={require("./logo.png")} 
+                            src={require("./images/logo.png")} 
                             className="dib dim w2 h3 br-100 pointer w3 h3 bg-blue ml2" 
                             alt="Site Name" 
                         />
@@ -35,7 +35,7 @@ class Navigation extends React.Component{
                     <p className="dtc v-mid mid-gray link w-25" title="Home">
                         <img 
                             onClick={() => this.props.changeRoute('homeDefault')}
-                            src={require("./logo.png")} 
+                            src={require("./images/logo.png")} 
                             className="dib dim w2 h3 br-100 pointer w3 h3 bg-blue ml2" 
                             alt="Site Name" 
                         />

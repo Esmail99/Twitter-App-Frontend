@@ -6,7 +6,9 @@ class Register extends React.Component{
         this.state = {
             registerUsername: '',
             registerEmail: '',
-            registerPassword: ''
+            registerPassword: '',
+            usernameTaken: false,
+            emailTaken: false
         }
     }
 
@@ -38,8 +40,16 @@ class Register extends React.Component{
             })
         })
         .then(response => response.json())
-        .then(user => {
-            if(user._id){
+        .then(data => {
+            if(data.username === 1){
+                this.setState({ emailTaken: false})
+                this.setState({ usernameTaken: true})
+            }
+            else if(data.email === 1) {
+                this.setState({ usernameTaken: false})
+                this.setState({ emailTaken: true})
+            }
+            else if(data._id){
                 this.props.changeRoute('signin');
             }
         })
@@ -59,8 +69,13 @@ class Register extends React.Component{
                                 className="pa2 input-reset ba bg-transparent w-70" 
                                 type="name" 
                                 name="username" 
-                                // required
+                                minLength="3"
+                                maxLength="15"
+                                required
                             />
+                            {
+                                this.state.usernameTaken ? <p className='red'>USERNAME ALREADY TAKEN!</p> : null
+                            }
                         </div>
                         <div className="mt3">
                             <label className="db fw6 lh-copy f6">Email</label>
@@ -69,8 +84,11 @@ class Register extends React.Component{
                                 className="pa2 input-reset ba bg-transparent w-75" 
                                 type="email" 
                                 name="email-address" 
-                                // required
+                                required
                             />
+                            {
+                                this.state.emailTaken ? <p className='red'>EMAIL ALREADY TAKEN!</p> : null
+                            }
                         </div>
                         <div className="mv3">
                             <label className="db fw6 lh-copy f6">Password</label>
@@ -79,12 +97,13 @@ class Register extends React.Component{
                                 className="pa2 input-reset ba bg-transparent w-75" 
                                 type="password" 
                                 name="password" 
-                                // required
+                                minLength="6"
+                                required
                             />
                         </div>
                         </fieldset>
                         <div>
-                        <input className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib" type="submit" value="Register" />
+                        <   input className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib" type="submit" value="Register" />
                         </div>
                         <div className="lh-copy mt3">Already have an accout?
                             <span 

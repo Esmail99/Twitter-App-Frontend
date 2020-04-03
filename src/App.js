@@ -5,19 +5,11 @@ import Signin from './components/Signin';
 import Register from './components/Register';
 import Home from './components/Home';
 import Profile from './components/Profile';
-// import Footer from './components/Footer';
 
 const initialState = {
-    route: 'profile',
+    route: 'homeDefault',
     isSignedin: false,
-    userInfo: {
-      "following": false,
-      "_id": "5e844e7146ff4f3920940b8f",
-      "username": "Esmail",
-      "email": "esmail@gmail.com",
-      "password": "123",
-      "__v": 0
-  }
+    userInfo: {}
 }
 
 class App extends Component {
@@ -52,6 +44,7 @@ class App extends Component {
               changeRoute={this.changeRoute}
               userInfo={this.state.userInfo}
               isSignedin={this.state.isSignedin}
+              loadUser={this.loadUser}
             />
           : this.state.route === 'profile'
           ? <Profile userInfo={this.state.userInfo} />
@@ -64,7 +57,6 @@ class App extends Component {
               loadUser={this.loadUser}
             />
         }
-        {/* <Footer /> */}
       </div>
     );
   }

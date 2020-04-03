@@ -5,7 +5,9 @@ class Signin extends React.Component{
         super(props);
         this.state = {
             signinEmail: '',
-            signinPassword: ''
+            signinPassword: '',
+            wrongEmail: false,
+            wrongPassword: false
         }
     }
 
@@ -28,9 +30,17 @@ class Signin extends React.Component{
             })
         })
         .then(response => response.json())
-        .then(user => {
-            if(user._id){
-                this.props.loadUser(user)
+        .then(data => {
+            if(data === 'Wrong Email') {
+                this.setState({ wrongPassword: false})
+                this.setState({ wrongEmail: true})
+            }
+            else if(data === 'Wrong Password') {
+                this.setState({ wrongEmail: false})
+                this.setState({ wrongPassword: true})
+            }
+            else if(data._id){
+                this.props.loadUser(data)
                 this.props.changeRoute('homeSignedin');
             }
         })
@@ -55,7 +65,11 @@ class Signin extends React.Component{
                                 type="email" 
                                 name="email-address"  
                                 id="email-address" 
+                                required
                             />
+                            {
+                                this.state.wrongEmail ? <p className='red'>EMAIL IS NOT EXIST , PLEASE REGISTER FIRST!</p> : null
+                            }
                         </div>
                         <div className="mv3">
                             <label className="db fw6 lh-copy f6" htmlFor="password">Password</label>
@@ -65,8 +79,11 @@ class Signin extends React.Component{
                                 type="password" 
                                 name="password"  
                                 id="password" 
-                                // required
+                                required
                             />
+                            {
+                                this.state.wrongPassword ? <p className='red'>WRONG PASSWORD!</p> : null
+                            }
                         </div>
                         </fieldset>
                         <div>
@@ -74,7 +91,6 @@ class Signin extends React.Component{
                                 className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib" 
                                 type="submit" 
                                 value="Sign in" 
-                                // required
                             />
                         </div>
                         <div className="lh-copy mt3">
