@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/Twitter-App-Frontend/static/css/main.5f361e03.chunk.css",
-    "main.js": "/Twitter-App-Frontend/static/js/main.938ae8e1.chunk.js",
-    "main.js.map": "/Twitter-App-Frontend/static/js/main.938ae8e1.chunk.js.map",
+    "main.js": "/Twitter-App-Frontend/static/js/main.a0078c6b.chunk.js",
+    "main.js.map": "/Twitter-App-Frontend/static/js/main.a0078c6b.chunk.js.map",
     "runtime-main.js": "/Twitter-App-Frontend/static/js/runtime-main.9d9b5354.js",
     "runtime-main.js.map": "/Twitter-App-Frontend/static/js/runtime-main.9d9b5354.js.map",
     "static/css/2.28a5ec9d.chunk.css": "/Twitter-App-Frontend/static/css/2.28a5ec9d.chunk.css",
     "static/js/2.9a47d91f.chunk.js": "/Twitter-App-Frontend/static/js/2.9a47d91f.chunk.js",
     "static/js/2.9a47d91f.chunk.js.map": "/Twitter-App-Frontend/static/js/2.9a47d91f.chunk.js.map",
     "index.html": "/Twitter-App-Frontend/index.html",
-    "precache-manifest.9f31b1fb3a21576c7453054662a0aac6.js": "/Twitter-App-Frontend/precache-manifest.9f31b1fb3a21576c7453054662a0aac6.js",
+    "precache-manifest.57ed3e6101abf0e55e00a3064dbbdcd4.js": "/Twitter-App-Frontend/precache-manifest.57ed3e6101abf0e55e00a3064dbbdcd4.js",
     "service-worker.js": "/Twitter-App-Frontend/service-worker.js",
     "static/css/2.28a5ec9d.chunk.css.map": "/Twitter-App-Frontend/static/css/2.28a5ec9d.chunk.css.map",
     "static/css/main.5f361e03.chunk.css.map": "/Twitter-App-Frontend/static/css/main.5f361e03.chunk.css.map",
@@ -29,6 +29,6 @@
     "static/css/2.28a5ec9d.chunk.css",
     "static/js/2.9a47d91f.chunk.js",
     "static/css/main.5f361e03.chunk.css",
-    "static/js/main.938ae8e1.chunk.js"
+    "static/js/main.a0078c6b.chunk.js"
   ]
 }
