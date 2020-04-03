@@ -12,7 +12,7 @@ class Profile extends React.Component{
     }
 
     componentDidMount() {
-        fetch(`http://localhost:5000/${this.props.userInfo.username}`)
+        fetch(`https://cryptic-reef-80535.herokuapp.com/${this.props.userInfo.username}`)
         .then(res => res.json())
         .then(tweets => {
             if(tweets.length){
@@ -74,7 +74,7 @@ class Profile extends React.Component{
     onChangeBtnClick(tweetId){
         if(this.state.editedTweetContent.length)
         {
-            fetch(`http://localhost:5000/tweet/updating/${tweetId}`,{
+            fetch(`https://cryptic-reef-80535.herokuapp.com/tweet/updating/${tweetId}`,{
                 method: 'put',
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify({
@@ -118,7 +118,7 @@ class Profile extends React.Component{
     }
 
     onDeleteClick = (tweetId) => {
-        fetch(`http://localhost:5000/tweet/deleting/${tweetId}`,{
+        fetch(`https://cryptic-reef-80535.herokuapp.com/tweet/deleting/${tweetId}`,{
             method: 'delete'
         })
         .then(response => response.json())

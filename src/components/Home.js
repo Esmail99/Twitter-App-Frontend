@@ -14,7 +14,7 @@ class Home extends React.Component{
     }
     
     componentDidMount() {
-        fetch("http://localhost:5000/home")
+        fetch("https://cryptic-reef-80535.herokuapp.com/home")
         .then(res => res.json())
         .then(tweets => {
             tweets = tweets.map((tweet,index) => {
@@ -130,7 +130,7 @@ class Home extends React.Component{
 
     onFormSubmit = (event) => {
         event.preventDefault();
-        fetch(`http://localhost:5000/tweet/posting/${this.props.userInfo.username}`,{
+        fetch(`https://cryptic-reef-80535.herokuapp.com/tweet/posting/${this.props.userInfo.username}`,{
             method: 'post',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
@@ -156,7 +156,7 @@ class Home extends React.Component{
                 document.getElementById(`likeCounter${tweetId}`).innerHTML=Number(document.getElementById(`likeCounter${tweetId}`).innerHTML)+1;
                 this.setState(Object.assign(this.state.liked,{ [tweetId]: true }));
                 document.getElementById(`likeBtn${tweetId}`).classList.add('bg-light-blue')
-                fetch(`http://localhost:5000/tweet/likes/${tweetId}/${this.props.userInfo.username}`,{
+                fetch(`https://cryptic-reef-80535.herokuapp.com/tweet/likes/${tweetId}/${this.props.userInfo.username}`,{
                     method: 'put'
                 })
                 .then(response => response.json())
@@ -165,7 +165,7 @@ class Home extends React.Component{
                 document.getElementById(`likeCounter${tweetId}`).innerHTML=Number(document.getElementById(`likeCounter${tweetId}`).innerHTML)-1;
                 this.setState(Object.assign(this.state.liked,{ [tweetId]: false }));
                 document.getElementById(`likeBtn${tweetId}`).classList.remove('bg-light-blue')
-                fetch(`http://localhost:5000/tweet/dislikes/${tweetId}/${this.props.userInfo.username}`,{
+                fetch(`https://cryptic-reef-80535.herokuapp.com/tweet/dislikes/${tweetId}/${this.props.userInfo.username}`,{
                     method: 'put'
                 })
                 .then(response => response.json())
@@ -186,7 +186,7 @@ class Home extends React.Component{
 
     onCommentClick = (tweetId) => {
         if(this.props.isSignedin && this.state.comment.length){
-            fetch(`http://localhost:5000/tweet/comment/${tweetId}`,{
+            fetch(`https://cryptic-reef-80535.herokuapp.com/tweet/comment/${tweetId}`,{
                 method: 'put',
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify({
@@ -217,7 +217,7 @@ class Home extends React.Component{
     }
 
     showProfile = (username) => {
-        fetch(`http://localhost:5000/${username}`)
+        fetch(`https://cryptic-reef-80535.herokuapp.com/${username}`)
         .then(res => res.json())
         .then(tweets => {
             tweets = tweets.map((tweet,index) => {
@@ -266,7 +266,7 @@ class Home extends React.Component{
 
     onFollowClick = (username,state) => {
         if(this.props.isSignedin){
-            fetch(`http://localhost:5000/${state}/${this.props.userInfo.username}`,{
+            fetch(`https://cryptic-reef-80535.herokuapp.com/${state}/${this.props.userInfo.username}`,{
                 method: 'put',
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify({
